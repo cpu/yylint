@@ -18,8 +18,8 @@ import (
 	"encoding/pem"
 	"testing"
 
-	"github.com/zmap/zcrypto/x509"
 	"github.com/cpu/yylint/v3/lint"
+	"github.com/zmap/zcrypto/x509"
 )
 
 var (
@@ -103,7 +103,7 @@ func BenchmarkZlint(b *testing.B) {
 	b.Run("All lints", func(b *testing.B) {
 		var lintResult *ResultSet
 		for i := 0; i < b.N; i++ {
-			lintResult = LintCertificate(x509Cert)
+			lintResult = LintCertificateZ(x509Cert)
 		}
 
 		globalLintResult = lintResult

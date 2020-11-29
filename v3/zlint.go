@@ -19,7 +19,6 @@ package zlint
 import (
 	"time"
 
-	"github.com/zmap/zcrypto/x509"
 	"github.com/cpu/yylint/v3/lint"
 	_ "github.com/cpu/yylint/v3/lints/apple"
 	_ "github.com/cpu/yylint/v3/lints/cabf_br"
@@ -28,6 +27,7 @@ import (
 	_ "github.com/cpu/yylint/v3/lints/etsi"
 	_ "github.com/cpu/yylint/v3/lints/mozilla"
 	_ "github.com/cpu/yylint/v3/lints/rfc"
+	"github.com/zmap/zcrypto/x509"
 )
 
 const Version int64 = 3
@@ -36,7 +36,7 @@ const Version int64 = 3
 // producing a ResultSet.
 //
 // Using LintCertificate(c) is equivalent to calling LintCertificateEx(c, nil).
-func LintCertificate(c *x509.Certificate) *ResultSet {
+func LintCertificateZ(c *x509.Certificate) *ResultSet {
 	// Run all lints from the global registry
 	return LintCertificateEx(c, nil)
 }

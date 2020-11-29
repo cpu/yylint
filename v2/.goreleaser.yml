@@ -1,11 +1,11 @@
-project_name: zlint
+project_name: yylint
 before:
   hooks:
     - go mod tidy
 builds:
   -
-    main: ./cmd/zlint/main.go
-    binary: zlint
+    main: ./cmd/yylint/main.go
+    binary: yylint
     env:
       - CGO_ENABLED=0
     goos:

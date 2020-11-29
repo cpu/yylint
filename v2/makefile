@@ -10,7 +10,7 @@ PARALLELISM := 5
 #   make integration INT_FLAGS="-includeSources='Mozilla,ETSI_ESI' -config small.config.json"
 INT_FLAGS :=
 
-CMDS = zlint zlint-gtld-update
+CMDS = yylint yylint-gtld-update
 CMD_PREFIX = ./cmd/
 BUILD = $(GO_ENV) go build
 TEST = $(GO_ENV) GORACE=halt_on_error=1 go test -race
@@ -18,10 +18,10 @@ INT_TEST = $(GO_ENV) go test -v -tags integration -timeout 20m ./integration/...
 
 all: $(CMDS)
 
-zlint:
+yylint:
 	$(BUILD) $(CMD_PREFIX)$(@)
 
-zlint-gtld-update:
+yylint-gtld-update:
 	$(BUILD) $(CMD_PREFIX)$(@)
 
 clean:
@@ -39,4 +39,4 @@ code-lint:
 testdata-lint:
 	./test/prepend_testcerts_openssl.sh && git diff --exit-code testdata/
 
-.PHONY: clean zlint zlint-gtld-update test integration code-lint testdata-lint
+.PHONY: clean yylint yylint-gtld-update test integration code-lint testdata-lint
